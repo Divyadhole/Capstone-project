@@ -1,0 +1,53 @@
+# Paths
+data_dir: "./data"
+output_dir: "./outputs"
+genome_file: "./data/Rhinopithecus_roxellana-001.fasta"
+vcf_files:
+  - "./data/PD_0588.variable.filtered.HF.snps.vcf.gz"
+  - "./data/PD_0598.variable.filtered.HF.snps.vcf.gz"
+  - "./data/PD_0602.variable.filtered.HF.snps.vcf.gz"
+  - "./data/PD_0603.variable.filtered.HF.snps.vcf.gz"
+metadata_file: "./data/metadata.xlsx"
+
+# PSMC parameters
+psmc_params:
+  -N: 25
+  -t: 15
+  -r: 5
+  -p: "4+25*2+4+6"
+
+# Climate data
+climate_data:
+  current: "./data/paleoclim/LH_v1_2_5m"  # Path to current climate layers
+  paleo_base: "./data/paleoclim"  # Base directory for paleo climate
+  variables: ["bio1", "bio12"]  # Temperature, Precipitation
+
+# MaxEnt parameters
+maxent_params:
+  features: ["linear", "quadratic", "product", "threshold", "hinge"]
+  regularization_multiplier: 1.0
+
+  maxent_jar_path: "./data/maxent/maxent/maxent.jar"
+ 
+  occurrence_file: "./outputs/occurrence_points_gbif.csv"
+  species_name: "Semnopithecus entellus"
+  current_climate_dirs:
+    - "./data/paleoclim/LH_v1_2_5m"
+  randomtestpoints: 0
+  replicates: 1
+  replicatetype: "crossvalidate"
+  extra_outputs:
+    writeclampgrid: false
+    writemess: false
+    responsecurves: false
+    jackknife: false
+
+# ABBA-BABA parameters
+abba_baba:
+  window_size: 100000  # 100kb windows
+  step_size: 50000  # 50kb step
+  min_sites: 10  # minimum sites per window
+  min_qual: 20  # minimum quality score
+  min_depth: 5  # minimum depth
+  max_missing: 0.2  # maximum missing data proportion
+
