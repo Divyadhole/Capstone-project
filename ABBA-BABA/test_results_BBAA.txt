@@ -1,0 +1,2 @@
+P1	P2	P3	Dstatistic	Z-score	p-value	f4-ratio	BBAA	ABBA	BABA
+Species_C	Species_A	Species_B	0.0305344	0.153006	0.878393	0.0220994	96.625	16.875	15.875
