@@ -93,5 +93,4 @@ Feel free to open issues or pull requests for bug fixes or extensions (e.g., add
 ## Contact
 
 Divya Dhole  
-M.S. in Data Science, University of Arizona  
-[divyadhole@email.arizona.edu](mailto:divyadhole@email.arizona.edu)
+M.S. in Data Science, University of Arizona
