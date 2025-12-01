@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langur Evolution & Climate Change</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4c9a;
+            --secondary: #0f3670;
+            --accent: #00a0e3;
+            --bg-soft: #f5fbff;
+            --text-dark: #1f2a44;
+            --text-body: #2d3748;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(120deg, #dfe9ff, #f7fbff);
+            color: var(--text-body);
+            line-height: 1.5;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .poster-container {
+            width: 1120px;
+            background: white;
+            border: 10px solid #dbe8ff;
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(13, 45, 108, 0.18);
+            overflow: hidden;
+        }
+
+        header {
+            background: var(--primary);
+            color: white;
+            display: grid;
+            grid-template-columns: 150px 1fr 150px;
+            align-items: center;
+            padding: 18px 30px;
+        }
+
+        .logo-box {
+            text-align: center;
+        }
+
+        .logo-box img {
+            max-width: 120px;
+            height: auto;
+        }
+
+        .title-block {
+            text-align: center;
+        }
+
+        .title-block h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 4px;
+            letter-spacing: 0.03em;
+        }
+
+        .title-block p {
+            margin: 2px 0;
+            font-size: 0.95rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .meta-bar {
+            background: var(--secondary);
+            color: #f7fafc;
+            text-align: center;
+            letter-spacing: 0.25em;
+            font-weight: 600;
+            padding: 6px 0;
+            font-size: 0.85rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            padding: 28px 30px 30px;
+            background: linear-gradient(180deg, #f7fbff 0%, #ffffff 80%);
+        }
+
+        .column {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #dfe6f3;
+            padding: 18px 18px 18px;
+            position: relative;
+            box-shadow: 0 6px 18px rgba(17, 36, 84, 0.12);
+        }
+
+        .column.intro,
+        .column.conclusion {
+            background: var(--bg-soft);
+        }
+
+        .column-label {
+            position: absolute;
+            top: -14px;
+            left: 18px;
+            background: var(--secondary);
+            color: white;
+            padding: 3px 12px;
+            font-size: 0.7rem;
+            letter-spacing: 0.16em;
+            border-radius: 14px;
+        }
+
+        .section {
+            margin-bottom: 16px;
+        }
+
+        .section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            color: var(--primary);
+            border-bottom: 2px solid #d7e4ff;
+            padding-bottom: 4px;
+            margin-bottom: 10px;
+        }
+
+        .section h3 {
+            font-size: 0.9rem;
+            color: #2b3f68;
+            margin: 8px 0 4px;
+        }
+
+        .section p,
+        .section li {
+            font-size: 0.88rem;
+            color: var(--text-body);
+        }
+
+        ul, ol {
+            margin: 6px 0 10px 16px;
+        }
+
+        .accent-box {
+            background: white;
+            border-left: 4px solid var(--primary);
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            box-shadow: inset 0 0 0 1px #e6efff;
+        }
+
+        .plot-frame {
+            background: #ffffff;
+            border: 1px solid #dfe6f3;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(13, 45, 108, 0.08);
+        }
+
+        .plot-frame img {
+            max-width: 100%;
+            border-radius: 6px;
+            border: 1px solid #cfd9ec;
+        }
+
+        .plot-caption {
+            font-size: 0.78rem;
+            color: #4a5c7a;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(110px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .stat-card {
+            background: #ecf4ff;
+            border-radius: 8px;
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid #d1e4ff;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: #394867;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 10px;
+            padding: 12px 15px;
+            border: 1px solid #dbe4f9;
+            box-shadow: inset 0 0 0 1px #eef4ff;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            font-size: 0.85rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 6px;
+            font-size: 0.8rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster-container">
+        <header>
+            <div class="logo-box">
+                <img src="file:///Users/divyadhole/Capstone-project/poster/university-of-arizona-a-logo-png_seeklogo-317354.png" alt="University of Arizona">
+            </div>
+            <div class="title-block">
+                <h1>Integrated Bioinformatics Workflow for Evolutionary Analysis</h1>
+                <p>Divya Dhole • M.S. in Data Science</p>
+                <p>Advisor: Dr. Kunal Arekar • College of Information Science</p>
+            </div>
+            <div class="logo-box">
+                <img src="file:///Users/divyadhole/Capstone-project/poster/university-of-arizona-a-logo-png_seeklogo-317354.png" alt="University of Arizona">
+            </div>
+        </header>
+
+        <div class="content-grid">
+            <div class="column intro">
+                <div class="column-label">INTRO</div>
+                <div class="section">
+                    <h2>Condensed Abstract</h2>
+                    <p>This capstone links genomic diversity, demographic history, and climate dynamics across eight langur species. Integrated workflows connect whole genomes, ecological niche modeling, and statistical tests to reveal how glacial cycles reshaped population structure and hybridization zones.</p>
+                    <div class="accent-box">
+                        <h3>Objectives & Purpose</h3>
+                        <ul>
+                            <li>Reconstruct demographic trajectories using PSMC/MSMC2 pipelines.</li>
+                            <li>Quantify current/future habitat suitability under RCP 8.5.</li>
+                            <li>Detect hybridization and climate-genome correlations.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2>Study Dataset</h2>
+                    <h3>Genomics</h3>
+                    <p>100+ whole genomes (30×) across 8 species processed with a GATK best-practices pipeline.</p>
+                    <h3>Climate & Terrain</h3>
+                    <p>19 WorldClim variables plus CMIP6 projections summarized per grid cell.</p>
+                    <h3>Occurrences</h3>
+                    <p>4,200 GBIF + field points curated with GeoPandas QA/QC, enabling MaxEnt models.</p>
+                    <div class="accent-box" style="background:#fff;">
+                        <h3>Data Coverage Snapshot</h3>
+                        <div class="stats-grid" style="margin-top:8px;">
+                            <div class="stat-card"><div class="stat-value">12</div><div class="stat-label">Countries Sampled</div></div>
+                            <div class="stat-card"><div class="stat-value">15+</div><div class="stat-label">Climate Layers</div></div>
+                            <div class="stat-card"><div class="stat-value">1.8TB</div><div class="stat-label">Genomic Data</div></div>
+                            <div class="stat-card"><div class="stat-value">4,200</div><div class="stat-label">Occurrence Points</div></div>
+                        </div>
+                        <p style="margin-top:10px; font-size:0.9rem; color:#4a5568;">Automated ETL scripts harmonize temporal metadata and spatial resolution, ensuring each grid cell links directly to climate anomalies for downstream modeling.</p>
+                    </div>
+                    <div class="accent-box" style="border-left-color:#00a0e3;">
+                        <h3>Workflow Stack</h3>
+                        <ul>
+                            <li>Snakemake orchestrates genomic + SDM pipelines.</li>
+                            <li>Docker containers ensure reproducible environments.</li>
+                            <li>AWS Batch scales compute for whole-genome analyses.</li>
+                            <li>Python suite: pandas, numpy, scikit-learn, GeoPandas, Rasterio, matplotlib.</li>
+                            <li>R suite: tidyverse, dismo, ENMeval, raster.</li>
+                            <li>MaxEnt 3.4.4 for species distribution modeling.</li>
+                            <li>Dsuite + PSMC/MSMC2 quantify introgression & demography.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="column-label">RESEARCH</div>
+                <div class="section">
+                    <h2>Methodology</h2>
+                    <div class="accent-box">
+                        <h3>Workflow Pipeline</h3>
+                        <ol>
+                            <li>Variant discovery & population structure analysis.</li>
+                            <li>Demographic reconstruction with PSMC/MSMC2.</li>
+                            <li>MaxEnt SDMs for current and 2050 climates.</li>
+                            <li>D-statistics and redundancy analysis for climate links.</li>
+                        </ol>
+                    </div>
+                    <div class="accent-box" style="border-left-color:#00a0e3;">
+                        <h3>Workflow Stack</h3>
+                        <ul>
+                            <li>Snakemake orchestrates genomic + SDM pipelines.</li>
+                            <li>Docker containers ensure reproducible environments.</li>
+                            <li>AWS Batch scales compute for whole-genome analyses.</li>
+                            <li>Python: pandas, numpy, scikit-learn, GeoPandas, Rasterio, matplotlib.</li>
+                            <li>R: tidyverse, dismo, ENMeval, raster.</li>
+                            <li>MaxEnt 3.4.4 for species distribution modeling.</li>
+                            <li>Dsuite + PSMC/MSMC2 quantify introgression & demography.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2>Analysis & Plots</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card"><div class="stat-value">3</div><div class="stat-label">Genetic Clusters</div></div>
+                        <div class="stat-card"><div class="stat-value">127</div><div class="stat-label">Genes Under Selection</div></div>
+                        <div class="stat-card"><div class="stat-value">30%</div><div class="stat-label">Habitat Loss by 2050</div></div>
+                        <div class="stat-card"><div class="stat-value">0.92</div><div class="stat-label">SDM AUC</div></div>
+                    </div>
+                    <div class="plot-frame" style="margin-top:16px;">
+                        <img src="file:///Users/divyadhole/Capstone-project/outputs/demographic_history.png" alt="Demographic History">
+                        <div class="plot-caption">PSMC reveals a 40% effective population decline during the Last Glacial Maximum with rapid rebound ~5 kya.</div>
+                    </div>
+                    <div class="plot-frame" style="margin-top:16px;">
+                        <img src="file:///Users/divyadhole/Capstone-project/outputs/demographic_climate_integration.png" alt="Climate Integration">
+                        <div class="plot-caption">Redundancy analysis links temperature seasonality to 32% of genomic variance.</div>
+                    </div>
+                    <div class="plot-frame" style="margin-top:16px;">
+                        <img src="file:///Users/divyadhole/Capstone-project/outputs/climate_time_series.png" alt="Climate Series">
+                        <div class="plot-caption">Climate trajectories contextualize SDM forecasts of contraction under RCP 8.5.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column conclusion">
+                <div class="column-label">CONCLUSION</div>
+                <div class="section">
+                    <h2>Key Findings</h2>
+                    <ul>
+                        <li>Population differentiation: Fst 0.15–0.28 with clear species clusters.</li>
+                        <li>D-statistic = 0.18 (Z=4.2) highlights introgression hotspots in Eastern Himalayas.</li>
+                        <li>Hybrid zones coincide with climate transition corridors seen in SDM outputs.</li>
+                        <li>5/8 species face >25% habitat loss by 2050, triggering conservation risk.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h2>Recommendations</h2>
+                    <div class="accent-box">
+                        <h3>Conservation Actions</h3>
+                        <ul>
+                            <li>Prioritize northern refugia & climate corridors for protection.</li>
+                            <li>Monitor hybrid zones for adaptive introgression signals.</li>
+                            <li>Integrate genomic vulnerability metrics into IUCN reviews.</li>
+                        </ul>
+                    </div>
+                    <div class="accent-box" style="border-left-color:#d53f8c;">
+                        <h3>Future Work</h3>
+                        <ul>
+                            <li>Couple agent-based dispersal with climate risk layers.</li>
+                            <li>Expand sampling in Western Ghats & understudied taxa.</li>
+                            <li>Deploy interactive dashboard for conservation partners.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2>Contact & Acknowledgments</h2>
+                    <div class="contact-card">
+                        <strong>Divya Dhole</strong>
+                        <p>M.S. in Data Science • University of Arizona</p>
+                        <p><i class="fas fa-envelope"></i> divyadhole@email.arizona.edu</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Tucson, AZ</p>
+                    </div>
+                    <div class="accent-box" style="margin-top:14px;">
+                        <h3>Data & References</h3>
+                        <ul>
+                            <li><strong>PaleoClim</strong> paleoclimate layers (Brown et al. 2018) · <a href="https://www.paleoclim.org/" target="_blank">paleoclim.org</a></li>
+                            <li><strong>Workflow & code</strong> · <a href="https://github.com/divyadhole/Capstone-project" target="_blank">github.com/divyadhole/Capstone-project</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div>© 2024 University of Arizona | College of Information Science</div>
+            <div class="footer-links">
+                <a href="mailto:divyadhole@email.arizona.edu"><i class="fas fa-envelope"></i> divyadhole@email.arizona.edu</a>
+                <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i> github.com/yourusername</a>
+                <a href="https://www.arizona.edu" target="_blank"><i class="fas fa-globe"></i> arizona.edu</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
